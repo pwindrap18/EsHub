@@ -57,8 +57,11 @@ module.exports = server => {
             owner,
             details,
             games,
-            tournaments
+            tournaments,
+            logo
         } = req.body
+
+        logo = req.file ? req.file.path : "img.jpeg"
 
         const team = new Team({
             name,
@@ -66,7 +69,7 @@ module.exports = server => {
             details,
             games,
             tournaments,
-            logo: req.file.path
+            logo
         });
 
         try {
@@ -85,6 +88,15 @@ module.exports = server => {
             const team = await Team.findOneAndUpdate({
                 _id: req.params.id
             }, req.body);
+
+            if (req.file) {
+                const player = await Team.findOneAndUpdate({
+                    _id: req.params.id
+                }, {
+                    photo: req.file.path
+                });
+            }
+
             res.send(201);
             next()
         } catch (error) {
