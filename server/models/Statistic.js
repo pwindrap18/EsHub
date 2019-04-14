@@ -14,26 +14,7 @@ const StatisticSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    round: {
-        type: String,
-        required: true
-    },
-    win: {
-        type: Number,
-        default: 0
-    },
-    lose: {
-        type: Number,
-        default: 0
-    },
-    draw: {
-        type: Number,
-        default: 0
-    },
-    chicken: {
-        type: Number,
-        default: 0
-    }
+    result: Array
 });
 
 StatisticSchema.plugin(timestamp);

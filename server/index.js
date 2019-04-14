@@ -7,6 +7,7 @@ const server = restify.createServer();
 // server.use(restify.plugins.bodyParser());
 // server.use(restify.plugins.multipartBodyParser());
 server.use(restify.plugins.urlEncodedBodyParser());
+server.use(restify.plugins.queryParser());
 
 server.get('/uploads/*', restify.plugins.serveStatic({
     directory: __dirname
@@ -26,5 +27,6 @@ db.once('open', () => {
     require('./routes/tournaments')(server);
     require('./routes/teams')(server);
     require('./routes/players')(server);
+    require('./routes/statistics')(server);
     console.log(`server started on port ${config.PORT}`);
 });
