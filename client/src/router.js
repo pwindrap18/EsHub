@@ -1,24 +1,31 @@
 import Vue from "vue";
 import Router from "vue-router";
 import Home from "./views/Home.vue";
+import Tournaments from "./views/Tournaments.vue";
+import Links from "./views/Links.vue";
+import Platform from "./views/Platform.vue";
 
 Vue.use(Router);
 
 export default new Router({
-  routes: [
-    {
+  routes: [{
       path: "/",
       name: "home",
       component: Home
     },
     {
-      path: "/about",
-      name: "about",
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () =>
-        import(/* webpackChunkName: "about" */ "./views/About.vue")
+      path: "/tournaments",
+      name: "tournaments",
+      component: Tournaments
+    }, {
+      path: "/links",
+      name: "links",
+      component: Links
+    },
+    {
+      path: "/platform",
+      name: "platform",
+      component: Platform
     }
   ]
 });
