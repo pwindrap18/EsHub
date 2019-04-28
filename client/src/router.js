@@ -14,7 +14,7 @@ export default new Router({
       component: Home
     },
     {
-      path: "/tournaments",
+      path: "/tournaments/:id",
       name: "tournaments",
       component: Tournaments
     }, {

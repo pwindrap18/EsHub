@@ -11,10 +11,6 @@ const TournamentSchema = new mongoose.Schema({
         required: true
     },
     games: Array,
-    type: {
-        type: String,
-        required: true
-    },
     status: {
         type: String,
         required: true
@@ -24,10 +20,12 @@ const TournamentSchema = new mongoose.Schema({
         required: true
     },
     schedule: {
-        type: Date,
+        type: String,
         required: true
     },
-    fixtures: Array
+    fixtures: Array,
+    image: String,
+    liveStreams: Array
 });
 
 TournamentSchema.plugin(timestamp);

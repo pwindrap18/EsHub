@@ -1,7 +1,7 @@
 <template>
-  <v-menu open-on-hover offset-y dark open-delay="300">
-    <v-btn flat dark slot="activator">
-      <v-icon dark left>expand_more</v-icon>Live Stream
+  <v-menu open-on-hover offset-y dark open-delay="100">
+    <v-btn flat slot="activator">
+      <v-icon left>expand_more</v-icon>Live Stream
     </v-btn>
     <v-list>
       <v-list-tile v-for="item in items" :key="item.title" router :to="item.link">
@@ -13,6 +13,7 @@
 
 <script>
 export default {
+  name: "Dropdown",
   data: () => ({
     items: [
       { title: "Links", link: "/links" },

@@ -1,6 +1,6 @@
 <template>
-  <nav>
-    <v-toolbar app dark flat>
+  <div class="navbar">
+    <v-toolbar app extended>
       <router-link to="/">
         <v-img src="/pepesad.png" height="40px" width="40px" contain></v-img>
       </router-link>
@@ -8,26 +8,26 @@
         <span class="font-weight-light">ES</span>
         <span class="font-weight-bold">HUB</span>
       </v-toolbar-title>
+      <template v-slot:extension>
+        <div class="hidden-sm-and-down">
+          <router-link to="/tournaments">
+            <v-btn flat>Tournaments</v-btn>
+          </router-link>
 
+          <router-link to="/schedule">
+            <v-btn flat>Schedule</v-btn>
+          </router-link>
+
+          <Dropdown></Dropdown>
+        </div>
+      </template>
       <v-spacer></v-spacer>
 
       <v-btn flat dark small icon class="hidden-md-and-up mr-0" @click="drawer = !drawer">
         <v-icon>menu</v-icon>
       </v-btn>
-
-      <div class="hidden-sm-and-down">
-        <router-link to="/tournaments">
-          <v-btn flat>Tournaments</v-btn>
-        </router-link>
-
-        <router-link to="/schedule">
-          <v-btn flat>Schedule</v-btn>
-        </router-link>
-
-        <Dropdown></Dropdown>
-      </div>
     </v-toolbar>
-    <v-navigation-drawer v-model="drawer" absolute temporary width="200px" light right>
+    <v-navigation-drawer v-model="drawer" absolute temporary width="200px" right>
       <v-list class="pt-0" dense>
         <v-list-tile v-for="item in items" :key="item.title" route :to="item.route">
           <v-list-tile-content>
@@ -46,7 +46,7 @@
         </v-list-group>
       </v-list>
     </v-navigation-drawer>
-  </nav>
+  </div>
 </template>
 
 
@@ -54,6 +54,7 @@
 import Dropdown from "./Dropdown";
 
 export default {
+  name: "NavBar",
   data() {
     return {
       drawer: null,
